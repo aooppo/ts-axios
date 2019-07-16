@@ -7,6 +7,8 @@ axios({
     a: 1,
     b: 2
   }
+}).then(res => {
+  console.log('#1', res)
 })
 
 axios({
@@ -16,10 +18,13 @@ axios({
     'content-type': 'application/json',
     'Accept': 'application/json, text/plain, */*'
   },
+  responseType: 'json',
   data: {
     a: 3,
     b: 4
   }
+}).then(res => {
+  console.log('#2', res)
 })
 
 const paramsString = 'q=URLUtils.searchParams&topic=api'
