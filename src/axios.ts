@@ -7,7 +7,7 @@ function createInstance():AxiosInstance {
   const ctx = new Axios()
   const intstance = Axios.prototype.request.bind(ctx)
   extend(intstance, ctx)
-  return <AxiosInstance> intstance
+  return intstance as AxiosInstance
 }
 
 const axios = createInstance()

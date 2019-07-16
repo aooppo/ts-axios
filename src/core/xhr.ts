@@ -19,11 +19,11 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     request.open(method.toUpperCase(), url!, true)
     request.onreadystatechange = function() {
       if (request.readyState !== 4) {
-        //readyState always equal 4, once ajax received result
+        /* readyState always equal 4, once ajax received result */
         return
       }
       if (request.status === 0) {
-        //net work error
+        /* net work error */
         return
       }
       const responseHeaders = parseHeaders(request.getAllResponseHeaders())
