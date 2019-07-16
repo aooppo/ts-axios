@@ -1,6 +1,6 @@
-import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types'
-import { parseHeaders } from './utils/headers'
-import { createError } from './utils/error'
+import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from '../types'
+import { parseHeaders } from '../utils/headers'
+import { createError } from '../utils/error'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
@@ -16,7 +16,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       reject(createError(`Timeout of ${timeout} ms exceeded`, config, 'ECONNABORTED', request))
     }
 
-    request.open(method.toUpperCase(), url, true)
+    request.open(method.toUpperCase(), url!, true)
     request.onreadystatechange = function() {
       if (request.readyState !== 4) {
         //readyState always equal 4, once ajax received result
@@ -43,7 +43,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     }
 
     Object.keys(headers).forEach(name => {
-      if (data === null && name.toLocaleLowerCase() == 'content-type') {
+      if (data === null && name.toLocaleLowerCase() === 'content-type') {
         delete headers[name]
       } else {
         request.setRequestHeader(name, headers[name])
