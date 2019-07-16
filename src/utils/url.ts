@@ -1,4 +1,4 @@
-import { isDate, isObject } from './util'
+import { isDate, isPlainObject } from './util'
 import { types } from 'util'
 
 function encode(val: string): string {
@@ -32,7 +32,7 @@ export function buildURL(url: string, param?: any): string {
     vals.forEach(v => {
       if (isDate(v)) {
         v = v.toISOString()
-      } else if (isObject(v)) {
+      } else if (isPlainObject(v)) {
         v = JSON.stringify(v)
       }
       tuples.push(`${encode(key)}=${encode(v)}`)
