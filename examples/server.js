@@ -31,6 +31,10 @@ router.get('/simple/get', function(req, res) {
   })
 })
 
+router.get('/interceptor/get', function(req, res) {
+  res.send("hey ")
+})
+
 router.get('/error/get', function(req, res) {
   if (Math.random() > 0.5) {
     res.json({
